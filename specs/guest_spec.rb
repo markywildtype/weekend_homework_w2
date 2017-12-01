@@ -8,12 +8,23 @@ class TestGuest < Minitest::Test
 
   def setup
     @guest1 = Guest.new("Marky", 12)
-
+    @song1 = Song.new("No Scrubs")
+    @song2 = Song.new("Sledgehammer")
+    playlist = [@song1, @song2]
+    @room1 = Room.new(playlist, 5)
   end
 
   def test_guest_name
     assert_equal("Marky", @guest1.name())
   end
 
+  def test_guest_money
+    assert_equal(12, @guest1.wallet())
+  end
+
+  def test_guest_can_afford_room__false
+    @room1.add_guest(@guest1)
+    assert_equal(0, @room1.guests().count())
+  end
 
 end

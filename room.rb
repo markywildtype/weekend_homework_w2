@@ -12,7 +12,7 @@ attr_reader :playlist, :capacity, :guests, :entry_fee
   end
 
   def add_guest(guest)
-    unless @capacity <= 0 
+    if @capacity <= 0 && guest.wallet >= @entry_fee
       @guests << guest
       @capacity -= 1
     else
