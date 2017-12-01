@@ -12,11 +12,12 @@ attr_reader :playlist, :capacity, :guests, :entry_fee
   end
 
   def add_guest(guest)
-    if @capacity <= 0 && guest.wallet >= @entry_fee
+    return if @capacity <= 0
+  if guest.wallet() >= @entry_fee
       @guests << guest
       @capacity -= 1
     else
-      return "I'm sorry, this room is full, #{guest} will have to wait!"
+      return "I'm sorry, you can't come in, #{guest.name()}."
     end
   end
 

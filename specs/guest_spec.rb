@@ -8,6 +8,7 @@ class TestGuest < Minitest::Test
 
   def setup
     @guest1 = Guest.new("Marky", 12)
+    @guest2 = Guest.new("Jeff", 35)
     @song1 = Song.new("No Scrubs")
     @song2 = Song.new("Sledgehammer")
     playlist = [@song1, @song2]
@@ -21,10 +22,11 @@ class TestGuest < Minitest::Test
   def test_guest_money
     assert_equal(12, @guest1.wallet())
   end
-
+#add_guest is adding guests regardless of their wallet amount
   def test_guest_can_afford_room__false
     @room1.add_guest(@guest1)
-    assert_equal(0, @room1.guests().count())
+    @room1.add_guest(@guest2)
+    assert_equal(1, @room1.guests().count())
   end
 
 end
