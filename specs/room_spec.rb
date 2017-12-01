@@ -15,7 +15,12 @@ class TestRoom < Minitest::Test
     @playlist = [@song1, @song2, @song3, @song4, @song5]
     @song6 = Song.new("The Fog")
     @room1 = Room.new(@playlist, 5)
-  
+    @guest1 = Guest.new("Marky")
+    @guest2 = Guest.new("Fraser")
+    @guest3 = Guest.new("David")
+    @guest4 = Guest.new("Kenoid")
+    @guest5 = Guest.new("Johnny")
+    @guest6 = Guest.new("Allan")
   end
 
   def test_room_capacity
@@ -42,5 +47,15 @@ class TestRoom < Minitest::Test
     assert_equal(expected, actual)
   end
 
+  def test_room_over_capacity
+    @room1.add_guest(@guest1)
+    @room1.add_guest(@guest2)
+    @room1.add_guest(@guest3)
+    @room1.add_guest(@guest4)
+    @room1.add_guest(@guest5)
+    @room1.add_guest(@guest6)
+    assert_equal(5, @room1.guests().count())
+    assert("I'm sorry, this room is full, #{@guest6} will have to wait!")
+  end
 
 end
