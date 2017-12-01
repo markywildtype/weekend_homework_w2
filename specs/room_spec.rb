@@ -13,9 +13,8 @@ class TestRoom < Minitest::Test
     @song4 = Song.new("Blank Space")
     @song5 = Song.new("Glitter and Trauma")
     @playlist = [@song1, @song2, @song3, @song4, @song5]
-
+    @song6 = Song.new("The Fog")
     @room1 = Room.new(@playlist, 5)
-    @guest1 = Guest.new("Marky")
   
   end
 
@@ -27,9 +26,20 @@ class TestRoom < Minitest::Test
     assert_equal(@playlist, @room1.playlist())
   end
 
+  def test_room_entry_fee
+    assert_equal(15, @room1.entry_fee)
+  end
+
   def test_add_guest
     @room1.add_guest(@guest1)
     assert_equal(1, @room1.guests().count)
+  end
+
+  def test_add_to_playlist
+    @room1.add_to_playlist(@song6)
+    expected = [@song1, @song2, @song3, @song4, @song5, @song6]
+    actual = @room1.playlist
+    assert_equal(expected, actual)
   end
 
 

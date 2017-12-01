@@ -14,7 +14,7 @@ attr_reader :playlist, :capacity, :guests, :entry_fee
   def add_guest(guest)
     
       @guests << guest
-
+    
   end
 
   def add_to_playlist(song)
