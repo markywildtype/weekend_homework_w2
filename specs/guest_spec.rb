@@ -22,7 +22,7 @@ class TestGuest < Minitest::Test
   def test_guest_money
     assert_equal(12, @guest1.wallet())
   end
-#add_guest is adding guests regardless of their wallet amount
+
   def test_guest_can_afford_room__false
     @room1.add_guest(@guest1)
     @room1.add_guest(@guest2)
