@@ -17,7 +17,7 @@ class TestRoom < Minitest::Test
     @room1 = Room.new(@playlist, 5)
     @guest1 = Guest.new("Marky", 15, "Ignition: Remix")
     @guest2 = Guest.new("Fraser", 20, nil)
-    @guest3 = Guest.new("David", 35, nil)
+    @guest3 = Guest.new("David", 35, "You Are My The Rock")
     @guest4 = Guest.new("Kenoid", 18, nil)
     @guest5 = Guest.new("Johnny", 28, nil)
     @guest6 = Guest.new("Allan", 48, nil)

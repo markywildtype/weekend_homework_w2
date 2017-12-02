@@ -8,7 +8,8 @@ class TestGuest < Minitest::Test
 
   def setup
     @guest1 = Guest.new("Marky", 12, "Sledgehammer")
-    @guest2 = Guest.new("Jeff", 35, nil)
+    @guest2 = Guest.new("Jeff", 35, "No Scrubs")
+    @guest3 = Guest.new("Louis", 20, "You Are My The Rock")
     @song1 = Song.new("No Scrubs")
     @song2 = Song.new("Sledgehammer")
     playlist = [@song1, @song2]
@@ -38,10 +39,12 @@ class TestGuest < Minitest::Test
     assert_equal("Sledgehammer", @guest1.favourite_song)
   end
 
-  def test_favourite_song_on_playlist
-    @room1.add_guest(@guest1)
-    actual = @guest1.favourite_song_on_playlist(@room1.playlist(), @guest1.favourite_song)
-    assert_equal("Woohoo! I LOVE Sledgehammer!", actual)
+  def test_favourite_song_on_playlist__true
+    assert_equal("Woohoo! I LOVE No Scrubs!", @room1.add_guest(@guest2)) 
+  end
+
+  def test_favourite_song_on_playlist__false
+    assert_equal("Aw, they don't have You Are My The Rock!", @room1.add_guest(@guest3))
   end
 
 end

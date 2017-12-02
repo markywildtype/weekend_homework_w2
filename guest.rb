@@ -13,6 +13,8 @@ attr_accessor :wallet
     for song in playlist
       if song.title == favourite_song
         return "Woohoo! I LOVE #{favourite_song}!"
+      else
+        return "Aw, they don't have #{favourite_song}!"
       end
     end
   end

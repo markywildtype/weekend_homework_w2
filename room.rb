@@ -17,6 +17,7 @@ attr_accessor :till
       @capacity -= 1
       @till += 15
       take_money(guest, 15)
+      guest.favourite_song_on_playlist(@playlist, guest.favourite_song)
     else
       return "I'm sorry, you can't come in, #{guest.name()}."
     end
