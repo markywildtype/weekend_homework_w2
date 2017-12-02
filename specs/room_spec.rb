@@ -37,8 +37,10 @@ class TestRoom < Minitest::Test
   end
 
   def test_add_guest
-    @room1.add_guest(@guest1)
+    @room1.add_guest(@guest6)
     assert_equal(1, @room1.guests().count)
+    # assert_equal(15, @room1.till())
+    # assert_equal(33, @guest6.wallet())
   end
 
   def test_add_to_playlist
@@ -59,4 +61,17 @@ class TestRoom < Minitest::Test
     assert("I'm sorry, you can't come in, #{@guest6.name()}.")
   end
 
+  def test_add_guest_costs_guest
+    @room1.add_guest(@guest5)
+    @room1.add_guest(@guest6)
+    assert_equal(13, @guest5.wallet())
+    assert_equal(33, @guest6.wallet())
+  end
+
+  def test_add_guest_adds_to_till
+    @room1.add_guest(@guest1)
+    assert_equal(15, @room1.till())
+    @room1.add_guest(@guest2)
+    assert_equal(30, @room1.till())
+  end
 end

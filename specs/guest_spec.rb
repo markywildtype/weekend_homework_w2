@@ -25,8 +25,14 @@ class TestGuest < Minitest::Test
 
   def test_guest_can_afford_room__false
     @room1.add_guest(@guest1)
+    assert_equal(0, @room1.guests().count())
+  end
+
+  def test_guest_can_afford_room__true
     @room1.add_guest(@guest2)
     assert_equal(1, @room1.guests().count())
+    assert_equal([@guest2], @room1.guests())
   end
+
 
 end
