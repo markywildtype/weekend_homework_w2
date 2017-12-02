@@ -38,13 +38,13 @@ class TestGuest < Minitest::Test
   def test_favourite_song
     assert_equal("Sledgehammer", @guest1.favourite_song)
   end
-
-  def test_favourite_song_on_playlist__true
-    assert_equal("Woohoo! I LOVE No Scrubs!", @room1.add_guest(@guest2)) 
-  end
-
+  
   def test_favourite_song_on_playlist__false
     assert_equal("Aw, they don't have You Are My The Rock!", @room1.add_guest(@guest3))
+  end
+
+  def test_favourite_song_on_playlist__true
+    assert_equal("Woohoo! I LOVE No Scrubs!", @room1.add_guest(@guest2))
   end
 
 end
