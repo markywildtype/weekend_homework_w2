@@ -1,5 +1,3 @@
-require("pry")
-
 class Room
 
 attr_reader :playlist, :capacity, :guests, :entry_fee
@@ -19,7 +17,6 @@ attr_accessor :till
       @capacity -= 1
       @till += 15
       take_money(guest, 15)
-      # guest.wallet() -= 15
     else
       return "I'm sorry, you can't come in, #{guest.name()}."
     end

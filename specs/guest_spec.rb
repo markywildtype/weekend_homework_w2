@@ -7,8 +7,8 @@ require_relative("../song.rb")
 class TestGuest < Minitest::Test
 
   def setup
-    @guest1 = Guest.new("Marky", 12)
-    @guest2 = Guest.new("Jeff", 35)
+    @guest1 = Guest.new("Marky", 12, "Sledgehammer")
+    @guest2 = Guest.new("Jeff", 35, nil)
     @song1 = Song.new("No Scrubs")
     @song2 = Song.new("Sledgehammer")
     playlist = [@song1, @song2]
@@ -34,5 +34,14 @@ class TestGuest < Minitest::Test
     assert_equal([@guest2], @room1.guests())
   end
 
+  def test_favourite_song
+    assert_equal("Sledgehammer", @guest1.favourite_song)
+  end
+
+  def test_favourite_song_on_playlist
+    @room1.add_guest(@guest1)
+    actual = @guest1.favourite_song_on_playlist(@room1.playlist(), @guest1.favourite_song)
+    assert_equal("Woohoo! I LOVE Sledgehammer!", actual)
+  end
 
 end
